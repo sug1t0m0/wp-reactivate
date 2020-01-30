@@ -1,6 +1,30 @@
 $ cat .gitignore
-# exclude node_modules 
+# exclude node_modules
 /node_modules
 
 # exclude built js
 /assets/js/*
+
+*~
+*.bak
+*.org
+Thumbs.db
+desktop.ini
+.DS_Store
+.buildpath
+.project
+.settings
+*.tmproj
+build
+.idea
+
+/.env
+/vendor
+/wordpress/*
+!/wordpress/favicon.ico
+!/wordpress/google*.html
+!/wordpress/wp-content
+/wordpress/wp-content/*
+!/wordpress/wp-content/themes
+/wordpress/wp-content/themes/*
+!/wordpress/wp-content/themes/mywebsite
