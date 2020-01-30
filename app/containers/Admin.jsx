@@ -37,7 +37,7 @@ export default class Admin extends Component {
       (json) => this.processOkResponse(json, 'saved'),
       (err) => console.log('error', err)
     );
-  }
+  };
 
   deleteSetting = () => {
     this.fetchWP.delete( 'example' )
@@ -45,7 +45,7 @@ export default class Admin extends Component {
       (json) => this.processOkResponse(json, 'deleted'),
       (err) => console.log('error', err)
     );
-  }
+  };
 
   processOkResponse = (json, action) => {
     if (json.success) {
@@ -56,13 +56,13 @@ export default class Admin extends Component {
     } else {
       console.log(`Setting was not ${action}.`, json);
     }
-  }
+  };
 
   updateInput = (event) => {
     this.setState({
       exampleSetting: event.target.value,
     });
-  }
+  };
 
   handleSave = (event) => {
     event.preventDefault();
@@ -71,12 +71,12 @@ export default class Admin extends Component {
     } else {
       this.updateSetting();
     }
-  }
+  };
 
   handleDelete = (event) => {
     event.preventDefault();
     this.deleteSetting();
-  }
+  };
 
   render() {
     return (

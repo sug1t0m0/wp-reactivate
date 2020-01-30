@@ -13,7 +13,7 @@
  * Plugin Name:       WP-Reactivate
  * Plugin URI:        https://gopangolin.com
  * Description:       React boilerplate for WordPress plugins
- * Version:           1.0.2
+ * Version:           1.0.3
  * Author:            pangolin
  * Author URI:        https://gopangolin.com
  * Text Domain:       wp-reactivate
@@ -26,11 +26,11 @@
 namespace Pangolin\WPR;
 
 // If this file is called directly, abort.
-if ( ! defined( 'WPINC' ) ) {
-	die;
+if ( ! defined('WPINC') ) {
+    die;
 }
 
-define( 'WP_REACTIVATE_VERSION', '1.0.2' );
+define('WP_REACTIVATE_VERSION', '1.0.3');
 
 
 /**
@@ -41,7 +41,7 @@ define( 'WP_REACTIVATE_VERSION', '1.0.2' );
  *
  *  * @since 1.0.0
  */
-spl_autoload_register(function ($class) {
+spl_autoload_register(function ( $class ) {
 
     // project-specific namespace prefix
     $prefix = __NAMESPACE__;
@@ -51,7 +51,7 @@ spl_autoload_register(function ($class) {
 
     // does the class use the namespace prefix?
     $len = strlen($prefix);
-    if (strncmp($prefix, $class, $len) !== 0) {
+    if ( strncmp($prefix, $class, $len) !== 0 ) {
         // no, move to the next registered autoloader
         return;
     }
@@ -65,7 +65,7 @@ spl_autoload_register(function ($class) {
     $file = $base_dir . str_replace('\\', '/', $relative_class) . '.php';
 
     // if the file exists, require it
-    if (file_exists($file)) {
+    if ( file_exists($file) ) {
         require $file;
     }
 });
@@ -76,12 +76,12 @@ spl_autoload_register(function ($class) {
  * @since 1.0.0
  */
 function init() {
-	$wpr = Plugin::get_instance();
-	$wpr_shortcode = Shortcode::get_instance();
-	$wpr_admin = Admin::get_instance();
-	$wpr_rest = Endpoint\Example::get_instance();
+    $wpr = Plugin::get_instance();
+    $wpr_shortcode = Shortcode::get_instance();
+    $wpr_admin = Admin::get_instance();
+    $wpr_rest = Endpoint\Example::get_instance();
 }
-add_action( 'plugins_loaded', 'Pangolin\\WPR\\init' );
+add_action('plugins_loaded', 'Pangolin\\WPR\\init');
 
 
 
@@ -91,13 +91,12 @@ add_action( 'plugins_loaded', 'Pangolin\\WPR\\init' );
  * @since 1.0.0
  */
 function widget_init() {
-	return register_widget( new Widget );
+    return register_widget(new Widget);
 }
-add_action( 'widgets_init', 'Pangolin\\WPR\\widget_init' );
+add_action('widgets_init', 'Pangolin\\WPR\\widget_init');
 
 /**
  * Register activation and deactivation hooks
  */
-register_activation_hook( __FILE__, array( 'Pangolin\\WPR\\Plugin', 'activate' ) );
-register_deactivation_hook( __FILE__, array( 'Pangolin\\WPR\\Plugin', 'deactivate' ) );
-
+register_activation_hook(__FILE__, array( 'Pangolin\\WPR\\Plugin', 'activate' ));
+register_deactivation_hook(__FILE__, array( 'Pangolin\\WPR\\Plugin', 'deactivate' ));

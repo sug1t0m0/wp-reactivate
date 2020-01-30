@@ -1,0 +1,9 @@
+# docker-compose.yml
+version: '3'
+services:
+  composer:
+    image: composer
+    volumes:
+      - ./:/app
+      - ./docker/php.ini:/usr/local/etc/php/php.ini
+    working_dir: /app
